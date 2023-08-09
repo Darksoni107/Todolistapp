@@ -1,0 +1,150 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 15px;
+    background-color: rgb(235, 218, 250);
+    Background-Color: #d1f2ebc2;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+nav{
+    margin-bottom: 10px;
+}
+
+ nav a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: rgb(202, 100, 202);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pressed {
+    opacity: 0.5;
+    color: red;
+    box-shadow: 0px;
+}
+
+
+.taskContainer {
+    width: 430px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 8px 20px 20px 1px lightgray;
+    border-radius: 10px;
+}
+
+.taskHeading {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 145, 255); 
+     padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+
+}
+
+.taskHeading h1 {
+    letter-spacing: 2px;
+}
+
+.taskHeading h2 {
+    font-size: 18px;
+    margin-top: 5px;
+    color: wheat;
+}
+
+.taskAdd {
+    display: flex;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 1px lightgray;
+    border-bottom: 1px solid #ddd;
+}
+
+input[name="task"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: 0px solid black;
+    border-bottom: 2px solid rgb(219, 179, 219);
+    overflow: hidden;
+}
+
+input[type="submit"] {
+    background-color: rgb(0, 145, 255);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 3px;
+}
+
+
+.taskList {
+    height: 55vh;
+    overflow-y: scroll;
+    padding: 12px;
+    list-style: circle;
+
+}
+
+.taskList li {
+    /* background-color: #f7f7f7; 
+    border: 1px solid #ddd; */
+    padding: 10px;
+    color: rgb(17, 16, 16);
+    margin-top: 10px;
+    font-family: sans-serif;
+    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+    overflow-x: hidden;
+    border-bottom: 1px solid lightgray;
+
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+.checked {
+    text-decoration: line-through purple 2px;
+}
+
+footer{
+     color: rgb(46, 43, 43);
+     text-align: right;
+     margin-top: 20px;
+     font-size: small;
+     
+}
+
+@media (max-width: 490px) {
+    .taskContainer {
+        width: 100%;
+    }
+
+    body {
+        margin: 10px;
+    }
+
+ }
+
+@media (max-width: 350px) {
+    .taskAdd {
+        flex-direction: column;
+    }
+
+    input[type="submit"] {
+        align-self: center;
+        margin-top: 5px;
+    }
+}
