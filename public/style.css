@@ -98,14 +98,14 @@ input[type="submit"] {
 }
 
 .taskList li {
-    /* background-color: #f7f7f7; 
-    border: 1px solid #ddd; */
+    background-color: #f7f7f7; 
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     color: rgb(17, 16, 16);
     margin-top: 10px;
     font-family: sans-serif;
-    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
-    overflow-x: hidden;
+     overflow-x: hidden;
     border-bottom: 1px solid lightgray;
 
 }
@@ -122,10 +122,8 @@ input[type="checkbox"] {
 footer{
      color: rgb(46, 43, 43);
      text-align: right;
-     margin-top: 20px;
-     font-size: small;
-     
-}
+     margin-top: 10px;
+ }
 
 @media (max-width: 490px) {
     .taskContainer {
