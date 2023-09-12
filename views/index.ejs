@@ -1,79 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do list</title>
-    <link rel="stylesheet" href="/style.css">
- </head>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<body>
+  <body>
+    <!-------------------------------- nav bar ------------------------------------------->
     <nav>
-        <a href="/" class="personal"><span>🏠</span>Personal</a>
-        <a href="/Work_task" class="work"><span>💼</span>Work</a>
+      <a href="/" class="personal" title="For custome list creation use = Url/custome list name. "><span>📅</span>My Tasks</a>
+      <a href="/Work" class="work"><span>💼</span> Work</a>
     </nav>
 
+    <!------------------ task heading -------------------------------->
     <div class="taskContainer">
-
-        <div class="taskHeading">
-            <h1>
-                <%= taskType %> tasks📝</h1>
-                        <h2>
-                            <%=date %>
-                        </h2>
-        </div>
-
-        <div class="taskOrganizer">
-            <form action="/submit" method="post" class="taskAdd">
-                <input type="text" name="task" placeholder="What would you like to do?">
-                <input type="hidden" name="taskType" value="<%= taskType %>" id="taskType">
-                <input type="submit" value="➕" id="submit">
+      <div class="taskHeading">
+        <h1><%= listName %> tasks📝</h1>
+        <h2><%=date %></h2>
+      </div>
+      <!------------------ task adder --------------------------------------------------->
+      <div class="taskOrganizer">
+        <form action="/submit" method="post" class="taskAdd">
+          <input
+            type="text"
+            name="task"
+            placeholder="What would you like to do?"
+          />
+          <input
+            type="hidden"
+            name="listName"
+            value="<%= listName %>"
+            id="listName"
+          />
+          <input type="submit" value="➕" id="submit" />
+        </form>
+      </div>
+      <!----------------- list render and task checker and deleter part ---------------------------->
+      <div class="taskList">
+        <ul>
+          <!-- <li><input type="checkbox" /> How are you</li>  default render -->
+          <%tasks_list.forEach( (task)=> { %>
+          <li>
+            <!-- checkbox for deleting -->
+            <form
+              action="/delete"
+              method="post"
+              name="listName"
+              style="display: inline-block"
+            >
+              <input type="hidden" name="taskId" value="<%=task._id %>" />
+              <input type="hidden" name="listName" value="<%=listName%>" />
+              <input type="checkbox" onchange="this.form.submit()" />
             </form>
-        </div>
-
-        <div class="taskList">
-            <ul>
-                <li><input type="checkbox"> How are you</li>
-                <li><input type="checkbox"> How are you</li>
-                <%task_list.forEach( (task)=> { %>
-
-                    <li><input type="checkbox">
-                        <%= task %>
-                    </li>
-
-                    <% }); %>
-            </ul>
-        </div>
-
+            <!-- task display -->
+            <%= task.task %>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
     </div>
+    <!---------------------- footer section ---------------------------------------------->
     <footer>
-        <p>Copyright© <%=year%> Divyansh Soni</p>
+      <p>Copyright© <%=year%> Divyansh Soni</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
 
     <script>
-      
-        let elemen = document.querySelector("#taskType");
-        let pageType = elemen.getAttribute("value");
+      let elemen = document.querySelector("#listName");
+      let pageType = elemen.getAttribute("value");
 
-        if (pageType === "Personal") {
-            $(".personal").addClass("pressed");
-        } else if (pageType === "Work") {
-            $(".work").addClass("pressed");
-        }
-
-
-        $("input[type='checkbox']").click(function () {
-            console.log("Checkbox clicked!");
-            let li = $(this).parent();
-            li.toggleClass("checked");
-        });
-
-
+      if (pageType === "My") {
+        document.querySelector(".personal").classList.add("pressed");
+      } else if (pageType === "Work") {
+        document.querySelector(".work").classList.add("pressed");
+      }
     </script>
-
-</body>
-
+  </body>
 </html>
